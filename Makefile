@@ -8,12 +8,7 @@ OBJET=test.o
 all: jeux clean 
 
 jeux: src/main.c
-	gcc src/main.c $(LDFLAGS) -o main  
+	gcc src/main.c $(LDFLAGS) -o main
 
 clean:
-	rm -rf  *.o	  
-
-
-
-
-
+	rm -rf  *.o

@@ -100,8 +100,3 @@ void pause_SDL(SDL_Surface* ecran)
         }
     }
 }
-
-
-
-
-

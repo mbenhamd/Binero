@@ -1,7 +1,7 @@
 #include <SDL/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL/SDL_ttf.h>
+#include <SDL/SDL_image.h>
+#include <SDL/SDL_mixer.h>
 #include "../include/icone_sdl.h"
 #include "../include/constantes.h"
 
@@ -215,9 +215,8 @@ void icone_musique_control(SDL_Surface* ecran,int continuer_musique)
     positionFond.y = CENTRAGE_LOGO_Y_MUSIQUE;
 
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
-    Mix_Music *musique;
-    musique = Mix_LoadMUS("sound/music_one.mp3");
-
+    Mix_Chunk *musique;
+    musique = Mix_LoadWAV("sound/music_one.ogg");
     if(continuer_musique==0)
     {
     Mix_HaltMusic();
@@ -226,17 +225,15 @@ void icone_musique_control(SDL_Surface* ecran,int continuer_musique)
     SDL_SetAlpha(icone_musique,SDL_SRCALPHA,190);
     SDL_BlitSurface(icone_musique,NULL,ecran,&positionFond);
     SDL_UpdateRect(ecran,0,0,0,0);
-
     }
     else
     {
-        Mix_PlayMusic(musique, -1);
+        Mix_PlayChannel(-1, musique, 0);
         icone_musique=SDL_LoadBMP("image/menu/options/sound.bmp");
         SDL_SetColorKey(icone_musique,SDL_SRCCOLORKEY,SDL_MapRGB(icone_musique->format,0,0,0));
         SDL_SetAlpha(icone_musique,SDL_SRCALPHA,190);
         SDL_BlitSurface(icone_musique,NULL,ecran,&positionFond);
         SDL_UpdateRect(ecran,0,0,0,0);
-
     }
 }
 

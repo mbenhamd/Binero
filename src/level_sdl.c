@@ -791,5 +791,3 @@ void XXL_Choix(SDL_Surface* ecran)
        SDL_Flip(ecran);
     }
 }
-
-
