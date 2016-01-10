@@ -1,0 +1,74 @@
+grille n*1 : grille=(int*[]){(int[]){-1,0,-1,1,1,-1,-1,0,0,-1},(int[]){-1,-1,-1,-1,-1,-1,0,-1,-1},(int[]){1,-1,-1,-1,1,-1,-1,-1,-1},(int[]){-1,-1,-1,0,-1,-1,-1,-1,-1,1},(int[]){-1,1,-1,0,-1,-1,-1,0,-1,-1},(int[]){0,1,-1,-1,-1,1,-1,-1,1,-1},(int[]){-1,-1,-1,-1,0,-1,0,-1,1,-1},(int[]){0,-1,0,-1,-1,-1,-1,-1,-1,0},(int[]){0,-1,-1,-1,1,-1,-1,-1,-1,-1},(int[]){-1,-1,0,-1,-1,0,-1,0,0,-1}};
+grille n*2 : grille=(int*[]){(int[]){1,-1,-1,0,-1,-1,-1,-1,1,-1},(int[]){-1,-1,1,-1,-1,-1,-1,1,-1,-1},(int[]){-1,-1,1,1,-1,-1,-1,-1,0,-1},(int[]){-1,-1,-1,-1,-1,-1,1,-1,0,-1},(int[]){-1,1,-1,-1,-1,-1,1,-1,-1,-1},(int[]){-1,1,-1,1,-1,0,-1,-1,-1,0},(int[]){-1,-1,-1,-1,-1,0,0,-1,-1,-1},(int[]){0,0,-1,-1,-1,-1,-1,-1,-1,1},(int[]){-1,-1,1,-1,-1,-1,-1,-1,1,-1},(int[]){-1,-1,-1,-1,-1,1,0,-1,-1,1}};
+
+
+
+
+
+
+
+void RempliDuoHorizontale(int **grille, int taille)
+{
+int A=0;
+int j=0;
+int i;
+
+for (i=0;i<taille; ++i)
+{
+while(j+1+A<=taille-2)
+{
+if ((grille[i][j+A]==grille[i][j+1+A]) != CASEVIDE)
+{
+	if (j==0)
+	{
+		grille[i][j+2]==(grille[i][j]+1)%POSSIBILITES;
+	}
+	else if (j==taille-2)
+	{
+		grille[i][j-1]==(grille[i][j]+1)%POSSIBILITES;
+	}
+	else
+	{
+
+		grille[i][j-1]=(grille[i][j]+1)%POSSIBILITES;
+		grille[i][j+2]=(grille[i][j]+1)%POSSIBILITES;
+	}
+}
+A++;
+}
+j=0;
+}
+}
+
+
+void RempliDuoVerticale(int **grille, int taille)
+{
+int A=0;
+int j=0;
+int i;
+
+for (i=0;i<taille; ++i)
+{
+while(j+1+A<=taille-2)
+{
+if ((grille[j+A][i]==grille[j+1+A][i]) != CASEVIDE)
+{
+	if (j==0)
+	{
+		grille[j+2][i]==(grille[j][i]+1)%POSSIBILITES;
+	}
+	else if (j==taille-2)
+	{
+		grille[j-1][i]==(grille[j][i]+1)%POSSIBILITES;
+	}
+	else
+	{
+		grille[j-1][i]=(grille[j][i]+1)%POSSIBILITES;
+		grille[j-2][i]=(grille[j][i]+1)%POSSIBILITES;
+	}
+}
+A++;
+}
+j=0;
+}
+}

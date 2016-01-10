@@ -1,0 +1,15 @@
+void fond_main(SDL_Surface* ecran);
+void fond_level(SDL_Surface* ecran);
+void icone_menu_level(SDL_Surface* ecran);
+void icone_exit_level(SDL_Surface* ecran);
+void icone_previous(SDL_Surface* ecran);
+void icone_load_save(SDL_Surface* ecran);
+void icone_menu(SDL_Surface* ecran);
+void icone_play(SDL_Surface* ecran);
+void icone_info(SDL_Surface* ecran);
+void icone_parametres(SDL_Surface* ecran);
+void icone_load(SDL_Surface* ecran);
+void icone_score(SDL_Surface* ecran);
+void icone_exit(SDL_Surface* ecran);
+void icone_musique_control(SDL_Surface* ecran,int continuer_musique);
+void icone_musique(SDL_Surface* ecran);

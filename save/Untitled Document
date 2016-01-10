@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <SDL/SDL.h>
+#include <unistd.h> 
+#include <SDL/SDL_ttf.h>
+#include <SDL/SDL_image.h>
+#include <SDL/SDL_mixer.h>
+#include <time.h>
+
+
+
+
+
+
+
+
+
+
+
+
+
+fichier=fopen(nom_fichier,"r");
+    rewind(fichier);
+        for (i = 0; i < 10; ++i)
+            {
+                for (j = 0; j < 10; ++j)
+                    {
+                        fscanf(fichier,"%d",&variable);
+                        grille[i][j]=variable;
+                        printf("%d",grille[i][j]);
+                    }
+                    printf("\n");
+            }
+
+fclose(fichier);
