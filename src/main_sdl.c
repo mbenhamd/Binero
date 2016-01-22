@@ -9,21 +9,33 @@
 
 SDL_Surface* init()
 {
+    printf("init0\n",stdout);
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER);
+    printf("init1\n",stdout);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+    printf("init2\n",stdout);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16);
+    printf("init3\n",stdout);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
-    SDL_Surface* ecran = SDL_SetVideoMode(HAUTEUR, LARGEUR, BPP, SDL_HWSURFACE);
+    printf("init4\n",stdout);
+    SDL_Surface* ecran = SDL_SetVideoMode(HAUTEUR, LARGEUR, BPP, SDL_HWSURFACE | SDL_DOUBLEBUF);
+    printf("init5\n",stdout);
     SDL_WM_SetCaption("Binero Game",NULL);
+    printf("init6\n",stdout);
     return ecran;
 }
 
 void menu(SDL_Surface* ecran)
 {
+    printf("menu0\n",stdout);
     TTF_Init();
+    printf("menu1\n",stdout);
     fond_main(ecran);
+    printf("menu2\n",stdout);
     SDL_Flip(ecran);
+    printf("menu3\n",stdout);
     pause_SDL(ecran);
+    printf("menu4\n",stdout);
 }
 
 void pause_SDL(SDL_Surface* ecran)

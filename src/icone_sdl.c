@@ -1,7 +1,7 @@
 #include <SDL/SDL.h>
-#include <SDL/SDL_ttf.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 #include "../include/icone_sdl.h"
 #include "../include/constantes.h"
 
@@ -9,6 +9,7 @@
 
 void fond_main(SDL_Surface* ecran)
 {
+    printf("fond0\n",stdout);
     SDL_Surface *imageDeFond;
     SDL_Rect positionFond;
     SDL_Rect positionText;
@@ -16,12 +17,32 @@ void fond_main(SDL_Surface* ecran)
     positionFond.y = 0;
     positionText.x=CENTRAGE_ECRAN_X-40;
     positionText.y=CENTRAGE_ECRAN_Y*3-50;
+    printf("fond1\n",stdout);
     imageDeFond=SDL_LoadBMP("image/menu.bmp");
+    printf("fond2\n",stdout);
     SDL_BlitSurface(imageDeFond, NULL,ecran, &positionFond);
+    printf("fond3\n",stdout);
     TTF_Font *police=TTF_OpenFont("font/font.ttf",100);
+    printf("fond4\n",stdout);
     SDL_Color couleurNoire= {0,0,0};
-    SDL_Surface* text=TTF_RenderText_Blended(police,"Welcome to the Binero Game !",couleurNoire);
-    SDL_BlitSurface(text,NULL,ecran,&positionText);
+    printf("fond5\n",stdout);
+    //SDL_Surface* text=TTF_RenderText_Blended(police,"Welcome to the Binero Game !",couleurNoire);
+    SDL_Surface* text_surface= NULL;
+    printf("fond6\n",stdout);
+    //SDL_BlitSurface(text,NULL,ecran,&positionText);
+
+    if(!(text_surface=TTF_RenderText_Blended(police,"Hello World!",couleurNoire))) {
+    printf("erreur1\n",stdout);
+    }
+    else {
+    printf("erreur2\n",stdout);  
+    SDL_BlitSurface(text_surface,NULL,ecran,NULL);
+    printf("erreur3\n",stdout);
+    //perhaps we can reuse it, but I assume not for simplicity.
+    SDL_FreeSurface(text_surface);
+    }
+
+    printf("fond7\n",stdout);
     icone_menu(ecran);
     icone_play(ecran);
     icone_info(ecran);
@@ -213,10 +234,12 @@ void icone_musique_control(SDL_Surface* ecran,int continuer_musique)
 
     positionFond.x = CENTRAGE_LOGO_X_MUSIQUE;
     positionFond.y = CENTRAGE_LOGO_Y_MUSIQUE;
-
-    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
+    printf("icone_musique_control0\n",stdout);
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 2048);
+    printf("icone_musique_control1\n",stdout);
     Mix_Chunk *musique;
     musique = Mix_LoadWAV("sound/music_one.ogg");
+    printf("icone_musique_control2\n",stdout);
     if(continuer_musique==0)
     {
     Mix_HaltMusic();
